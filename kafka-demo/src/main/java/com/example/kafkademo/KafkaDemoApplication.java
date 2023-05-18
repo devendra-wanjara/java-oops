@@ -8,28 +8,18 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class KafkaDemoApplication {
-	static ApplicationContext context;
+    static ApplicationContext context;
 
+    public static void main (String[] args) {
+        SpringApplication.run(KafkaDemoApplication.class, args);
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(KafkaDemoApplication.class, args);
-	}
-
-	@Bean
-	public CommandLineRunner commandLineRunner (ApplicationContext context) {
-		return args -> {
-			System.out.println("Let's get beans for two subclass which are invoked my their constructor:");
-			var sender = (Sender) context.getBean(Sender.class);
-			sender.send("devTopic1", "Hello dEVEN");
-		};
-	}
-
-	/*@Bean
-	@EventListener(ApplicationStartedEvent.class)
-	public void generate(Sender sender){
-		System.out.println("Hello World");
-		//sender.send("devTopic1", "Hello dEVEN");
-
-	}*/
-
+    @Bean
+    public CommandLineRunner commandLineRunner (ApplicationContext context) {
+        return args -> {
+            System.out.println("Let's get beans for two subclass which are invoked my their constructor:");
+            var sender = (Sender) context.getBean(Sender.class);
+            sender.send("devTopic1", "Hello dEVEN");
+        };
+    }
 }
