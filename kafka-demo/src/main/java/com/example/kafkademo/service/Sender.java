@@ -1,4 +1,4 @@
-package com.example.kafkademo;
+package com.example.kafkademo.service;
 
 import lombok.RequiredArgsConstructor;
 import net.datafaker.Faker;
